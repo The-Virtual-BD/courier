@@ -4,37 +4,39 @@
         <div
             class=" md:mt-[4rem] md:w-44 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
             <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 text-center md:text-left">
-                <li class="">
+                <li class="{{ request()->is('/') ? 'bg-gray-100 text-gray-900 hover:text-blue-500' : 'text-white hover:text-gray-900' }}">
                     <a href="{{ route('dashboard') }}"
-                        class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-white no-underline hover:text-white ">
+                        class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle no-underline  ">
                         <span class="iconify mr-4" data-icon="ci:home-alt-fill"></span><span
-                            class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Dashboard</span>
+                            class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Dashboard</span>
                     </a>
                 </li>
-                <li class="bg-white">
-                    <a href="{{ route('flights.index') }}"
-                        class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-blue no-underline hover:text-blue-500 ">
-                        <span class="iconify mr-4 text-blue-500" data-icon="ic:sharp-flight"></span><span
-                            class="pb-1 md:pb-0 text-xs md:text-base text-blue-400 md:text-blue-900 block md:inline-block">Flight
+                <li class="{{ request()->is('flights*') ? 'bg-gray-100 text-gray-900 hover:text-blue-500' : 'text-white'}}">
+                    <a href="{{route('flights.index')}}" class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-blue no-underline {{ request()->is('flights*') ? 'bg-white text-gray-900 hover:text-blue-500' : 'text-white hover:text-gray-900'}}">
+                        <span class="iconify mr-4" data-icon="ic:sharp-flight"></span><span
+                            class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Flight
                             Planner</span>
                     </a>
-                    <ul class="ml-10">
-                        <li><a href="{{ route('flights.index') }}"
-                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:text-white hover:bg-blue-500 ">
-                                <span
-                                    class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Flight
+                    <ul class="ml-10 {{ request()->is('flights*') ? '' : 'hidden'}}">
+                        <li>
+                            <a href="{{ route('flights.index') }}"
+                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:bg-gray-100 hover:text-blue-500 {{ request()->is('flights') ? 'bg-gray-100' : '' }}">
+                                <span class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Flight
                                     Planner</span>
-                            </a></li>
-                        <li><a href="{{ route('flights.create') }}"
-                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:text-white hover:bg-blue-500 ">
-                                <span
-                                    class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Quick Create</span>
-                            </a></li>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('flights.create') }}"
+                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:bg-gray-100 hover:text-blue-500 {{ request()->is('flights/create') ? 'bg-gray-100' : '' }}">
+                                <span class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Quick
+                                    Create</span>
+                            </a>
+                        </li>
                         <li><a href=""
-                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:text-white hover:bg-blue-500 ">
-                                <span
-                                    class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Cargo</span>
-                            </a></li>
+                                class="px-1 md:px-2 flex-1 flex items-center py-1 pl-1 align-middle text-gray-900 no-underline hover:bg-gray-100 hover:text-blue-500">
+                                <span class="pb-1 md:pb-0 text-xs md:text-base block md:inline-block">Cargo</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

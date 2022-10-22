@@ -5,60 +5,66 @@
         </h2>
     </x-slot>
     <x-slot name="button">
-        <a href="{{route('flights.create')}}" class="rounded px-2 py-1 bg-blue-500 text-white">Create</a>
+        <a href="{{ route('flights.create') }}" class="rounded px-2 py-1 bg-blue-500 text-white">Create</a>
     </x-slot>
     <div class=" sm:px-6 lg:px-8">
+        {{-- Filter Section --}}
         <div class="mb-4 md:col-span-2 md:mt-0 bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="filterForm">
                 <div class="grid grid-cols-5 gap-3">
                     <div class="col-span-5 sm:col-span-1 flex items-center">
-                        <label for="company-website" class="block text-sm font-medium text-gray-700 mr-2">Request Date</label>
+                        <label for="requestDate" class="block text-sm font-medium text-gray-700 mr-2">Request
+                            Date</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
-                            <input type="text" name="company-website" id="company-website"
+                            <input type="text" name="requestDate" id="requestDate"
                                 class="block w-full flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
                         </div>
                     </div>
                     <div class="col-span-5 sm:col-span-1 flex items-center">
-                        <label for="company-website" class="block text-sm font-medium text-gray-700 mr-2">Departure Time</label>
+                        <label for="deptime" class="block text-sm font-medium text-gray-700 mr-2">Departure
+                            Time</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
-                            <input type="text" name="company-website" id="company-website"
+                            <input type="text" name="deptime" id="deptime"
                                 class="block w-full flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
                         </div>
                     </div>
                     <div class="col-span-5 sm:col-span-1 flex items-center">
-                        <label for="company-website" class="block text-sm font-medium text-gray-700 mr-2">Arrival Time</label>
+                        <label for="arrtime" class="block text-sm font-medium text-gray-700 mr-2">Arrival Time</label>
                         <div class="mt-1 flex rounded-md shadow-sm">
-                            <input type="text" name="company-website" id="company-website"
+                            <input type="text" name="arrtime" id="arrtime"
                                 class="block w-full flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-9 gap-3 mt-1">
                     <div class="col-span-9 sm:col-span-1 flex items-center">
-                        <label for="country" class="block text-sm font-medium text-gray-700 mr-2">Origin</label>
-                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                            <option>MIM</option>
-                            <option>Nas</option>
+                        <label for="origin" class="block text-sm font-medium text-gray-700 mr-2">Origin</label>
+                        <select id="origin" name="origin"
+                            class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+                            <option value="MIM">MIM</option>
+                            <option value="NAS">NAS</option>
                         </select>
                     </div>
                     <div class="col-span-9 sm:col-span-1 flex items-center">
-                        <label for="country" class="block text-sm font-medium text-gray-700 mr-2">Departure</label>
-                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                            <option>MIM</option>
-                            <option>Nas</option>
+                        <label for="deperture" class="block text-sm font-medium text-gray-700 mr-2">Departure</label>
+                        <select id="deperture" name="deperture"
+                            class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+                            <option value="MIM">MIM</option>
+                            <option value="NAS">NAS</option>
                         </select>
                     </div>
                     <div class="col-span-9 sm:col-span-1 flex items-center">
-                        <label for="country" class="block text-sm font-medium text-gray-700 mr-2">Change</label>
-                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                            <option>Yes</option>
-                            <option>No</option>
+                        <label for="change" class="block text-sm font-medium text-gray-700 mr-2">Change</label>
+                        <select id="change" name="change"
+                            class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+                            <option value="N">No</option>
+                            <option value="Y">Yes</option>
                         </select>
                     </div>
                     <div class="col-span-9 sm:col-span-1 flex items-center">
                         <label for="connect" class="block text-sm font-medium text-gray-700 mr-2">Connect</label>
-                        <input type="number" name="company-website" id="company-website"
-                                class="block w-full flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                        <input type="number" name="connect" id="connect" value="0"
+                            class="block w-full flex-1 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
                     </div>
                 </div>
             </form>
@@ -67,7 +73,7 @@
         {{-- Table --}}
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-4 bg-white border-b border-gray-200">
-                <table id="fptable" class="display text-center text-xs">
+                <table id="flighttable" class="display text-center text-xs">
                     <thead>
                         <tr class="uppercase">
                             <th>Request Date</th>
@@ -84,207 +90,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>N</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>N</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>N</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>Y</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>Y</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>1</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>Y</td>
-                            <td>0</td>
-                            <td class="flex">
-
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>2</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>Y</td>
-                            <td>1</td>
-                            <td class="flex">
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>16.06.2022</td>
-                            <td>2</td>
-                            <td>EK405</td>
-                            <td>MIM</td>
-                            <td>NAS</td>
-                            <td>17.06.2022 18:00</td>
-                            <td>17.06.2022 22:00</td>
-                            <td>04:00</td>
-                            <td>77W</td>
-                            <td>N</td>
-                            <td>1</td>
-                            <td class="flex">
-                                <a href="" target="_blank"
-                                    class="bg-blue-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-blue-700"><span
-                                        class="iconify" data-icon="carbon:view-filled"></span></a>
-                                <a href=""
-                                    class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700"><span
-                                        class="iconify" data-icon="dashicons:edit"></span></a>
-                                <button type="button"
-                                    class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700"><span
-                                        class="iconify" data-icon="bi:trash-fill"></span></button>
-                            </td>
-                        </tr>
-                    </tbody>
-
                 </table>
             </div>
         </div>
@@ -295,11 +100,121 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="{{ asset('js/vacancy.js') }}"></script>
         <script>
-            $('#fptable').DataTable(
-                {
-                    info: false,
-                }
-            );
+            // Filtering
+            $('#requestDate').daterangepicker();
+            $('#deptime').daterangepicker({
+                "timePicker": true,
+                "startDate": "10/16/2022",
+                "endDate": "10/22/2022"
+            }, function(start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format(
+                    'YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+            $('#arrtime').daterangepicker({
+                "timePicker": true,
+                "startDate": "10/16/2022",
+                "endDate": "10/22/2022"
+            }, function(start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format(
+                    'YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+
+
+
+
+
+            var vacancylist = null;
+            vacancylist = $('#flighttable').DataTable({
+                processing: true,
+                serverSide: true,
+                info: false,
+                ajax: '{!! route('flights.index') !!}',
+                columns: [{
+                        data: 'requestDate',
+                        name: 'requestDate'
+                    },
+                    {
+                        data: 'leg',
+                        name: 'leg'
+                    },
+                    {
+                        data: 'flightNo',
+                        name: 'flightNo'
+                    },
+                    {
+                        data: 'origin',
+                        name: 'origin'
+                    },
+                    {
+                        data: 'deperture',
+                        name: 'deperture'
+                    },
+                    {
+                        data: 'deptime',
+                        name: 'deptime'
+                    },
+                    {
+                        data: 'arrtime',
+                        name: 'arrtime'
+                    },
+                    {
+                        data: 'ftime',
+                        name: 'ftime'
+                    },
+                    {
+                        data: 'equipment',
+                        name: 'equipment'
+                    },
+                    {
+                        data: 'change',
+                        name: 'change'
+                    },
+                    {
+                        data: 'connect',
+                        name: 'connect'
+                    },
+                    {
+                        data: null,
+                        render: function(data) {
+                            return `<div class="flex"><a href="${BASE_URL}flights/${data.id}/edit?id=${data.id}" class="bg-green-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-green-700" ><span class="iconify" data-icon="dashicons:edit"></span></a>
+                                <button type="button"  class="bg-red-600 rounded-md text-white py-2 px-2 mx-1 hover:bg-red-700" onclick="flightPlanDelete(${data.id});"><span class="iconify" data-icon="bi:trash-fill"></span></button></div>`;
+                        }
+                    }
+                ]
+            });
+
+
+
+            function flightPlanDelete(mediaID) {
+                Swal.fire({
+                    title: "Delete ?",
+                    text: "Are you sure to delete this Plan ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: "Delete",
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            method: 'DELETE',
+                            url: BASE_URL + 'flights/' + mediaID + '?id=' + mediaID,
+                            success: function(response) {
+                                if (response.status == "success") {
+                                    Swal.fire('Success!', response.message, 'success');
+                                    vacancylist.draw();
+                                } else if (response.status == "error") {
+                                    Swal.fire('This item is not deletable!', response.message, 'error');
+                                    vacancylist.draw();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
         </script>
     </x-slot>
 </x-app-layout>
